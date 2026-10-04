@@ -1,19 +1,26 @@
-name: Deploy to GitHub Pages
+name: Build and publish GitHub Pages
 
 on:
   push:
     branches: [main]
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+      - 'src/**'
+      - 'public/**'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: pages
+  group: github-pages-build
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,27 +30,20 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
       - name: Build site
         run: npm run build
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish built site to the Pages branch root
+        run: |
+          cp -R dist/. .
+          touch .nojekyll
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --force index.html assets logos brand-mark.svg .nojekyll
+          if git diff --cached --quiet; then
+            echo "The published site is already up to date."
+          else
+            git commit -m "Publish GitHub Pages build" -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
+            git push
+          fi
