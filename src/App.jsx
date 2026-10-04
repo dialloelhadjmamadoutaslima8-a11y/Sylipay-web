@@ -54,7 +54,7 @@ const capabilities = [
 function Brand({ footer = false }) {
   return <a className={`brand${footer ? ' brand-footer' : ''}`} href="#accueil" aria-label="SYLIPAY TECH, accueil">
     <img className="brand-logo" src={`${import.meta.env.BASE_URL}logos/sylipay-tech-logo.jpg`} alt="" />
-    {!footer && <span className="brand-text"><strong>SYLIPAY TECH</strong><small>FINTECH · BLOCKCHAIN · DIGITAL</small></span>}
+    {!footer && <span className="brand-text"><strong><span>SYLI</span>PAY TECH</strong><small><i /> FINTECH · BLOCKCHAIN · DIGITAL</small></span>}
   </a>
 }
 
