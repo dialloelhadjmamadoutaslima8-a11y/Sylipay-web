@@ -20,8 +20,8 @@ const capabilities = [
 
 function Brand({ footer = false }) {
   return <a className={`brand${footer ? ' brand-footer' : ''}`} href="#accueil" aria-label="SYLIPAY TECH, accueil">
-    <span className="brand-symbol" aria-hidden="true">S</span>
-    <span className="brand-text"><strong>SYLIPAY <span>TECH</span></strong>{!footer && <small>FINTECH · BLOCKCHAIN · DIGITAL</small>}</span>
+    <img className="brand-logo" src={`${import.meta.env.BASE_URL}logos/sylipay-tech-logo.jpg`} alt="" />
+    {!footer && <span className="brand-text"><strong>SYLIPAY TECH</strong><small>FINTECH · BLOCKCHAIN · DIGITAL</small></span>}
   </a>
 }
 
@@ -82,7 +82,7 @@ function Ecosystem() {
       const Icon = product.Icon
       return <article className={`product-card product-${product.tone} reveal`} key={product.number}>
         <div className="product-card-top">
-          {product.logo ? <img className="product-logo" src={`${import.meta.env.BASE_URL}${product.logo}`} alt={`Logo ${product.name}`} loading="lazy" /> : <span className="product-icon"><Icon size={25} /></span>}
+          {product.logo ? <img className="product-logo" src={`${import.meta.env.BASE_URL}${product.logo}`} alt={`Logo ${product.name}`} loading="lazy" /> : <span className="product-icon"><Icon size={34} /></span>}
           <span className="product-number">{product.number}</span>
         </div>
         <p className="product-category">{product.category}</p><h3>{product.name}</h3>
