@@ -1,15 +1,48 @@
 import { useEffect, useState } from 'react'
 import {
-  ArrowDown, ArrowRight, ArrowUpRight, Blocks, Code2, GraduationCap,
+  ArrowDown, ArrowRight, ArrowUpRight, Blocks, Check, Code2, GraduationCap,
   Menu, Network, ShieldCheck, X,
 } from 'lucide-react'
 import './styles.css'
 
 const navigation = [['Écosystème', 'ecosysteme'], ['Technologies', 'technologies'], ['À propos', 'apropos']]
 const products = [
-  { number: '01', name: 'SYLIChange', category: 'ACCÈS · CONVERSION', description: 'Une passerelle entre les actifs numériques et les moyens de paiement locaux.', tags: ['Crypto-actifs', 'Mobile Money', 'Non-custodial'], logo: 'logos/sylichange-logo.jpg', url: 'https://sylichange.com/', tone: 'cyan' },
-  { number: '02', name: 'SYLI Payments', category: 'INFRASTRUCTURE · API', description: 'Des outils de paiement crypto pensés pour s’intégrer aux services des entreprises.', tags: ['API REST', 'Paiements', 'B2B'], logo: 'logos/syli-payments-logo.jpg', url: 'https://sylipayments.com/', tone: 'blue' },
-  { number: '03', name: 'Savoir Plus', category: 'ÉDUCATION · COMPÉTENCES', description: 'Une plateforme de formation en ligne pour apprendre, transmettre et progresser.', tags: ['E-learning', 'Formateurs', 'Entreprises'], Icon: GraduationCap, url: 'https://www.savoirplus.io/', tone: 'gold' },
+  {
+    number: '01',
+    name: 'SYLIChange',
+    category: 'ACCÈS · CONVERSION',
+    description: 'Une passerelle non-custodiale pour acheter, vendre et convertir des crypto-actifs à l’aide de moyens de paiement locaux.',
+    details: ['Achat, vente et conversion de USDT, BTC, ETH et SOL', 'Mobile Money et autres moyens locaux selon disponibilité', 'Les crypto-actifs ne sont pas conservés par SYLIChange'],
+    audience: 'Particuliers dans les marchés couverts',
+    tags: ['Crypto-actifs', 'Mobile Money', 'Non-custodial'],
+    logo: 'logos/sylichange-logo.jpg',
+    url: 'https://sylichange.com/',
+    tone: 'cyan',
+  },
+  {
+    number: '02',
+    name: 'SYLI Payments',
+    category: 'INFRASTRUCTURE · API',
+    description: 'Une infrastructure destinée aux entreprises qui souhaitent intégrer des paiements en crypto à leurs services.',
+    details: ['API REST pour créer et suivre des paiements', 'Checkout et webhooks pour connecter les systèmes marchands', 'Documentation et intégration pour les plateformes'],
+    audience: 'E-commerce, marketplaces, SaaS et développeurs',
+    tags: ['API REST', 'Paiements crypto', 'B2B'],
+    logo: 'logos/syli-payments-logo.jpg',
+    url: 'https://sylipayments.com/',
+    tone: 'blue',
+  },
+  {
+    number: '03',
+    name: 'Savoir Plus',
+    category: 'ÉDUCATION · COMPÉTENCES',
+    description: 'Une plateforme de formation en ligne qui réunit apprenants, formateurs et organisations autour de l’apprentissage.',
+    details: ['Formations vidéo, ressources et suivi de progression', 'Espace formateur pour créer et publier des cours', 'Parcours de formation et suivi pour les entreprises'],
+    audience: 'Apprenants, formateurs et entreprises',
+    tags: ['Formations en ligne', 'Formateurs', 'Entreprises'],
+    Icon: GraduationCap,
+    url: 'https://www.savoirplus.io/',
+    tone: 'gold',
+  },
 ]
 const capabilities = [
   { number: '01', Icon: Code2, title: 'Infrastructure API', text: 'Des intégrations et des flux numériques conçus pour connecter les services.' },
@@ -87,11 +120,13 @@ function Ecosystem() {
         </div>
         <p className="product-category">{product.category}</p><h3>{product.name}</h3>
         <p className="product-description">{product.description}</p>
+        <ul className="product-details">{product.details.map(detail => <li key={detail}><Check size={15} /><span>{detail}</span></li>)}</ul>
+        <p className="product-audience"><strong>Pour qui ?</strong> {product.audience}</p>
         <div className="product-tags">{product.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
         <a className="product-link" href={product.url} target="_blank" rel="noreferrer">Découvrir {product.name} <ArrowUpRight size={16} /></a>
       </article>
     })}</div>
-    <p className="ecosystem-note">Les services, moyens de paiement et disponibilités dépendent de chaque solution et des marchés couverts.</p>
+    <p className="ecosystem-note">Les fonctionnalités, moyens de paiement et disponibilités dépendent de chaque solution, des partenaires actifs et des marchés couverts.</p>
   </section>
 }
 
