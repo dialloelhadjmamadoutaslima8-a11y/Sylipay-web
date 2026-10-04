@@ -89,9 +89,9 @@ function Hero() {
       <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="orbit orbit-three" />
       <span className="orbit-point point-one" /><span className="orbit-point point-two" /><span className="orbit-point point-three" />
       <div className="hero-core"><span className="core-icon">S</span><strong>SYLIPAY</strong><small>TECHNOLOGIES FOR ALL</small></div>
-      <div className="orbit-label label-fintech"><span className="label-icon"><Network size={16} /></span><span>FINTECH<small>Des paiements plus simples</small></span></div>
-      <div className="orbit-label label-blockchain"><span className="label-icon"><Blocks size={16} /></span><span>BLOCKCHAIN<small>De nouveaux usages</small></span></div>
-      <div className="orbit-label label-learning"><span className="label-icon"><GraduationCap size={16} /></span><span>ÉDUCATION<small>Des compétences en mouvement</small></span></div>
+      <div className="ecosystem-node node-change"><span className="node-logo"><img src={`${import.meta.env.BASE_URL}logos/sylichange-logo.jpg`} alt="" /></span><span><strong>SYLIChange</strong><small>ÉCHANGE · CRYPTO</small></span><i /></div>
+      <div className="ecosystem-node node-payments"><span className="node-logo"><img src={`${import.meta.env.BASE_URL}logos/syli-payments-logo.jpg`} alt="" /></span><span><strong>SYLI Payments</strong><small>PAIEMENTS · API</small></span><i /></div>
+      <div className="ecosystem-node node-learning"><span className="node-logo node-learning-icon"><GraduationCap size={23} /></span><span><strong>Savoir Plus</strong><small>APPRENTISSAGE</small></span><i /></div>
       <div className="art-location"><span /> 09° 32′ N &nbsp; 13° 41′ W</div>
       <a className="art-scroll" href="#ecosysteme" aria-label="Faire défiler vers l’écosystème"><ArrowDown size={15} /></a>
     </div>
